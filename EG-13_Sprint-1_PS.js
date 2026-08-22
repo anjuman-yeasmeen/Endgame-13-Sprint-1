@@ -127,6 +127,87 @@ function mergeSortedArrays(arr1, arr2) {
 }
 
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function findMedian(nums) {
+    let sorted = [...nums].sort((a, b) => a - b);
+    let middle = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle - 1] + sorted[middle]) / 2;
+    } else {
+        return sorted[middle];
+    }
+}
+
+
+/**
+ * @param {number[]} nums
+ * @return {number|null}
+ */
+function findSecondLargest(nums) {
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
+
+    for (let num of nums) {
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num !== largest) {
+            secondLargest = num;
+        }
+    }
+
+    return secondLargest === -Infinity ? null : secondLargest;
+}
+
+/**
+ * @param {Array} arr
+ * @return {*}
+ */
+function findMode(arr) {
+    let frequency = {};
+    let mode = arr[0];
+    let maxCount = 0;
+
+    for (let item of arr) {
+        frequency[item] = (frequency[item] || 0) + 1;
+
+        if (frequency[item] > maxCount) {
+            maxCount = frequency[item];
+            mode = item;
+        }
+    }
+
+    return mode;
+}
+
+/**
+ * @param {string[]} arr
+ * @return {string[]}
+ */
+function naturalSort(arr) {
+    return [...arr].sort((a, b) =>
+        a.localeCompare(b, undefined, { numeric: true })
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
