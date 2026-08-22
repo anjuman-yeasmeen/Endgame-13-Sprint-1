@@ -56,3 +56,45 @@ function findGCD(a, b) {
     }
     return a;
 }
+
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+function findLCM(a, b) {
+    let x = a;
+    let y = b;
+
+    while (y !== 0) {
+        let temp = y;
+        y = x % y;
+        x = temp;
+    }
+
+    return (a * b) / x;
+}
+
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+function isPrime(num) {
+    if (num < 2) {
+        return false;
+    }
+
+    for (let i = 2; i * i <= num; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+
+
+
+
